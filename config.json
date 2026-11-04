@@ -1,0 +1,7 @@
+{
+  "root_url": "https://www.3gpp.org/ftp/Specs/latest",
+  "request_timeout_seconds": 30,
+  "request_retries": 3,
+  "request_delay_seconds": 0.25,
+  "max_directories": 1000
+}
