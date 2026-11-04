@@ -1,0 +1,54 @@
+name: Monitor 3GPP latest files
+
+on:
+  schedule:
+    - cron: "17 6,16 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: monitor-3gpp-latest
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan the 3GPP directory tree
+        id: scan
+        run: python monitor.py --config config.json --state state.json --report new_files.md
+
+      - name: Commit the updated snapshot
+        run: |
+          if git diff --quiet -- state.json; then
+            echo "No snapshot change to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state.json
+          git commit -m "Update 3GPP file snapshot"
+          git push
+
+      - name: Create a notification issue
+        if: steps.scan.outputs.new_count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEW_COUNT: ${{ steps.scan.outputs.new_count }}
+        run: |
+          gh issue create \
+            --title "3GPP monitor: ${NEW_COUNT} new file(s)" \
+            --body-file new_files.md
