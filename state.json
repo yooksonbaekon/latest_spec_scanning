@@ -40420,9 +40420,6 @@
     "Rel-19/28_series/28104-j30.zip": {
       "url": "https://www.3gpp.org/ftp/Specs/latest/Rel-19/28_series/28104-j30.zip"
     },
-    "Rel-19/28_series/28105-j60.zip": {
-      "url": "https://www.3gpp.org/ftp/Specs/latest/Rel-19/28_series/28105-j60.zip"
-    },
     "Rel-19/28_series/28111-j50.zip": {
       "url": "https://www.3gpp.org/ftp/Specs/latest/Rel-19/28_series/28111-j50.zip"
     },
@@ -41454,6 +41451,9 @@
     },
     "Rel-19/29_series/29866-j00.zip": {
       "url": "https://www.3gpp.org/ftp/Specs/latest/Rel-19/29_series/29866-j00.zip"
+    },
+    "Rel-19/29_series/29867-030.zip": {
+      "url": "https://www.3gpp.org/ftp/Specs/latest/Rel-19/29_series/29867-030.zip"
     },
     "Rel-19/29_series/29889-j10.zip": {
       "url": "https://www.3gpp.org/ftp/Specs/latest/Rel-19/29_series/29889-j10.zip"
@@ -51324,6 +51324,6 @@
     }
   },
   "initialized": true,
-  "last_successful_check_utc": "2026-11-22T14:34:33+00:00",
+  "last_successful_check_utc": "2026-11-22T21:47:53+00:00",
   "root_url": "https://www.3gpp.org/ftp/Specs/latest"
 }
